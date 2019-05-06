@@ -1,0 +1,17 @@
+{
+  "name": "imgreptile",
+  "version": "1.0.0",
+  "description": "网页图片爬虫",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon index.js"
+  },
+  "author": "JacksonZhou",
+  "license": "ISC",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "ejs": "^2.6.1",
+    "request": "^2.88.0"
+  }
+}

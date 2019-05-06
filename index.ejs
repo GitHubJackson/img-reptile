@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    *{margin: 0px;padding: 0px;list-style: none;}
+    .box{width: 1000px;margin: 0 auto;overflow: hidden;}
+    .box ul{float: left;width: 25%;}
+    .box li{width: 100%;text-align: center}
+    .box img{width: 90%;}
+  </style> 
+</head>
+<body> 
+  <div class="box">
+    <ul></ul>
+    <ul></ul>
+    <ul></ul>
+    <ul></ul>
+  </div>
+
+  <script>
+    let imgs = '<%- JSON.stringify(imgs) %>'
+    imgs = JSON.parse(imgs) // 转化为普通数组形式
+    // imgs = [...imgs,...imgs,...imgs]
+    let box = document.querySelector('.box')
+    let ul = box.children
+    let x = 0
+    // 插入单张图片
+    for(let i=0;i<imgs.length;i++){
+      let newImg = document.createElement('li')
+      newImg.innerHTML = '<img src='+imgs[i]+'>'
+      var minUl=Math.min(ul[0].clientHeight,ul[1].clientHeight,ul[2].clientHeight,ul[3].clientHeight) // 计算最短的ul
+      for(let j=0;j<ul.length;j++) {
+        if(ul[j].clientHeight===minUl) {
+          x=j
+          break
+        }
+      }
+      // 往最短的ul插入图片，也就是'补短'，形成图片瀑布的关键步骤
+      ul[x].appendChild(newImg) 
+    }
+    // 还可以再优化，采用懒加载来进行，有空再继续弄！
+  </script>
+</body>
+</html>
